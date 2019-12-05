@@ -16,6 +16,7 @@ if [ $? != 0 ]; then
     ssh $1 "tee -a /etc/dropbear/authorized_keys" < ~/.ssh/id_rsa.pub
 fi
 echo "installing dependencies"
+ssh $1 "opkg update"
 ssh $1 "opkg install libstdcpp"
 echo "Installing files to router"
 scp ./fadecandyserver $1:/etc/init.d/
